@@ -14,6 +14,14 @@ const pianotag2 = document.querySelector('#piano2');
 
 let interval;
 
+const intervalStart = () => {
+  interval = setInterval(() => {
+    if (transcript === '' && t === true) {
+      talkAI('Are you there?');
+    }
+  }, 20000);
+};
+
 drumtag1.addEventListener('click', () => {
   drum2.pause();
   piano1.pause();
@@ -82,6 +90,7 @@ const talkAI = (text) => {
     clearInterval(interval);
     recognition.start();
     t = true;
+    intervalStart();
   };
 };
 
@@ -156,9 +165,3 @@ recognition.onresult = (e) => {
     }
   }
 };
-
-interval = setInterval(() => {
-  if (transcript === '' && t === true) {
-    talkAI('Hello');
-  }
-}, 20000);

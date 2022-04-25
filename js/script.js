@@ -12,6 +12,8 @@ const drumtag2 = document.querySelector('#drum2');
 const pianotag1 = document.querySelector('#piano1');
 const pianotag2 = document.querySelector('#piano2');
 
+let interval;
+
 drumtag1.addEventListener('click', () => {
   drum2.pause();
   piano1.pause();
@@ -67,7 +69,7 @@ start.addEventListener('click', () => {
   mic.start();
   amplitude.setInput(mic);
   recognition.start();
-  clearInterval();
+  clearInterval(interval);
   t = true;
 });
 
@@ -75,10 +77,10 @@ const talkAI = (text) => {
   const utter = new SpeechSynthesisUtterance(text);
   synth.speak(utter);
   recognition.stop();
-  clearInterval();
+  clearInterval(interval);
   utter.onend = () => {
+    clearInterval(interval);
     recognition.start();
-    clearInterval();
     t = true;
   };
 };
@@ -103,7 +105,7 @@ recognition.onresult = (e) => {
       head2.classList.remove('d-none');
     } else {
       transcript = '';
-      talkAI('i did not hear you');
+      talkAI('Could you repeat that?');
       return;
     }
   }
@@ -118,7 +120,7 @@ recognition.onresult = (e) => {
       transcript = '';
     } else {
       transcript = '';
-      talkAI('i did not hear you');
+      talkAI('Could you repeat that?');
       return;
     }
   }
@@ -136,7 +138,7 @@ recognition.onresult = (e) => {
       transcript = '';
     } else {
       transcript = '';
-      talkAI('i did not hear you');
+      talkAI('Could you repeat that?');
       return;
     }
   }
@@ -149,13 +151,13 @@ recognition.onresult = (e) => {
       transcript = '';
     } else {
       transcript = '';
-      talkAI('i did not hear you');
+      talkAI('Could you repeat that?');
       return;
     }
   }
 };
 
-setInterval(() => {
+interval = setInterval(() => {
   if (transcript === '' && t === true) {
     talkAI('Hello');
   }

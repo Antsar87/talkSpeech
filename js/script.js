@@ -2,7 +2,45 @@
 const start = document.querySelector('#start');
 const box1 = document.querySelector('.box1');
 const box2 = document.querySelector('.box2');
+const head = document.querySelector('.head');
+const head2 = document.querySelector('.head2');
 const body = document.querySelector('body');
+
+const drumtag1 = document.querySelector('#drum1');
+const drumtag2 = document.querySelector('#drum2');
+
+const pianotag1 = document.querySelector('#piano1');
+const pianotag2 = document.querySelector('#piano2');
+
+drumtag1.addEventListener('click', () => {
+  drum2.pause();
+  piano1.pause();
+  piano2.pause();
+  toggleInput(drum1);
+});
+
+drumtag2.addEventListener('click', () => {
+  drum1.pause();
+  piano1.pause();
+  piano2.pause();
+  toggleInput(drum2);
+});
+
+pianotag1.addEventListener('click', () => {
+  drum1.pause();
+  drum2.pause();
+  piano2.pause();
+  toggleInput(piano1);
+});
+
+pianotag2.addEventListener('click', () => {
+  drum1.pause();
+  drum2.pause();
+  piano1.pause();
+  toggleInput(piano2);
+});
+
+// true or false
 let t;
 let first = true;
 let sec = false;
@@ -26,6 +64,7 @@ start.addEventListener('click', () => {
   body.classList.remove('hidden');
   recognition.start();
   mic.start();
+  clearInterval();
   t = true;
 });
 
@@ -33,9 +72,11 @@ const talkAI = (text) => {
   const utter = new SpeechSynthesisUtterance(text);
   synth.speak(utter);
   recognition.stop();
+  clearInterval();
   utter.onend = () => {
     recognition.start();
     t = true;
+    clearInterval();
   };
 };
 
@@ -52,9 +93,10 @@ recognition.onresult = (e) => {
       transcript == 'okay'
     ) {
       talkAI('Alright! That’s the spirit! Let’s go!');
-      alert('Funciona');
       fourth = false;
-      t = false;
+      transcript = false;
+      head.classList.add('d-none');
+      head2.classList.remove('d-none');
     } else {
       transcript = '';
       talkAI('i did not hear you');
@@ -69,6 +111,7 @@ recognition.onresult = (e) => {
       );
       third = false;
       fourth = true;
+      transcript = '';
     } else {
       transcript = '';
       talkAI('i did not hear you');
@@ -85,6 +128,7 @@ recognition.onresult = (e) => {
       talkAI('The pleasure is all mine! …Do you like music?');
       sec = false;
       third = true;
+      transcript = '';
     } else {
       transcript = '';
       talkAI('i did not hear you');
@@ -97,14 +141,13 @@ recognition.onresult = (e) => {
       talkAI('hello there, I’m Robert The Robot! What’s your name?');
       first = false;
       sec = true;
+      transcript = '';
     } else {
       transcript = '';
       talkAI('i did not hear you');
       return;
     }
   }
-
-  transcript = '';
 };
 
 setInterval(() => {

@@ -6,6 +6,7 @@
 :root {
   --main: #ece3d2;
   --black: #241e3f;
+  --highlighted: #ed7c14;
 }
 
 body {
@@ -32,8 +33,34 @@ body {
   display: none !important;
 }
 
+.d-flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
 .hidden {
   overflow: hidden;
+}
+
+.line {
+  width: 1px;
+  background: black;
+  margin: 0 10px;
+}
+
+.high {
+  color: var(--highlighted);
+}
+
+.mt-5 {
+  margin-top: 5px;
 }
 /* utilities */
 
@@ -53,4 +80,19 @@ body {
 
 .box2 main .head img {
   height: 150px;
+}
+
+.box2 main .head2 ul {
+  list-style: none;
+}
+
+.box2 main .head2 ul button {
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+
+.box2 main .head2 img {
+  height: 100px;
+  object-fit: cover;
 }

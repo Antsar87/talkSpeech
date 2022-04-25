@@ -8,12 +8,12 @@
   Press "T" to toggle between a sound file and audio input (mic).
  */
 
-var mic, soundFile;
+var mic, drum1, drum2, piano1, piano2;
 var amplitude;
 var prevLevels = new Array(60);
 
 function setup() {
-  c = createCanvas(windowWidth, 300);
+  c = createCanvas(windowWidth, 200);
 
   rectMode(CENTER);
   // colorMode(HSB);
@@ -23,7 +23,11 @@ function setup() {
   mic = new p5.AudioIn();
 
   // load the sound, but don't play it yet
-  soundFile = loadSound('../music/drum1.wav');
+  drum1 = loadSound('../music/drum1.wav');
+  drum2 = loadSound('../music/drum2.wav');
+
+  piano1 = loadSound('../music/melody1.wav');
+  piano2 = loadSound('../music/melody2.wav');
 
   amplitude = new p5.Amplitude();
   amplitude.setInput(mic);
@@ -57,7 +61,7 @@ function draw() {
 
     var hueValue = map(h, minHeight, height, 200, 255);
 
-    fill("#241E3F");
+    fill('#241E3F');
 
     rect(x, height / 2, w, h);
     rect(width - x, height / 2, w, h);

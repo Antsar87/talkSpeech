@@ -13,15 +13,15 @@ function windowResized() {
 
 // Toggle input and change which
 // source is feeding the p5.Amplitude.
-function toggleInput() {
-  if (soundFile.isPlaying()) {
-    soundFile.pause();
+function toggleInput(audio) {
+  if (audio.isPlaying()) {
+    audio.pause();
     mic.start();
     amplitude.setInput(mic);
   } else {
-    soundFile.play();
+    audio.play();
     mic.stop();
-    amplitude.setInput(soundFile);
+    amplitude.setInput(audio);
   }
 }
 

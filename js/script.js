@@ -64,6 +64,7 @@ start.addEventListener('click', () => {
   body.classList.remove('hidden');
   recognition.start();
   mic.start();
+  amplitude.setInput(mic);
   clearInterval();
   t = true;
 });
@@ -75,8 +76,8 @@ const talkAI = (text) => {
   clearInterval();
   utter.onend = () => {
     recognition.start();
-    t = true;
     clearInterval();
+    t = true;
   };
 };
 
@@ -90,7 +91,8 @@ recognition.onresult = (e) => {
       transcript == 'ok' ||
       transcript == 'sure' ||
       transcript == 'okey' ||
-      transcript == 'okay'
+      transcript == 'okay' ||
+      transcript.includes('yes')
     ) {
       talkAI('Alright! That’s the spirit! Let’s go!');
       fourth = false;

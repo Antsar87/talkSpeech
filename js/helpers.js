@@ -4,7 +4,7 @@
 
 // resize canvas on windowResized
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  resizeCanvas(windowWidth, 300);
   background(0);
 }
 

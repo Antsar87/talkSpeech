@@ -1,0 +1,56 @@
+@font-face {
+  font-family: american;
+  src: url(../fonts/American\ Typewriter\ Regular.ttf);
+}
+
+:root {
+  --main: #ece3d2;
+  --black: #241e3f;
+}
+
+body {
+  background-color: var(--main);
+  font-family: american;
+  color: var(--black);
+}
+
+/* utilities */
+.txt-center {
+  text-align: center;
+}
+
+.fw-300 {
+  font-weight: 300;
+}
+
+.bg-black {
+  background: var(--black);
+  color: var(--main);
+}
+
+.d-none {
+  display: none !important;
+}
+
+.hidden {
+  overflow: hidden;
+}
+/* utilities */
+
+.box1 {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box1 main #start {
+  border: none;
+  padding: 10px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.box2 main .head img {
+  height: 150px;
+}

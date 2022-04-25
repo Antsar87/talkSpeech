@@ -12,6 +12,7 @@ const drumtag2 = document.querySelector('#drum2');
 const pianotag1 = document.querySelector('#piano1');
 const pianotag2 = document.querySelector('#piano2');
 
+
 drumtag1.addEventListener('click', () => {
   drum2.pause();
   piano1.pause();
@@ -63,10 +64,11 @@ start.addEventListener('click', () => {
   box2.classList.remove('d-none');
   body.classList.remove('hidden');
   recognition.start();
-  mic.start();
-  amplitude.setInput(mic);
   clearInterval();
   t = true;
+
+  mic.start();
+  amplitude.setInput(mic);
 });
 
 const talkAI = (text) => {
@@ -125,7 +127,8 @@ recognition.onresult = (e) => {
     if (
       transcript.includes('my name is') ||
       transcript.includes('i am') ||
-      transcript.includes("i'm")
+      transcript.includes("i'm") ||
+      transcript !== ""
     ) {
       talkAI('The pleasure is all mine! …Do you like music?');
       sec = false;

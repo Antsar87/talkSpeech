@@ -63,12 +63,13 @@ start.addEventListener('click', () => {
   box1.classList.add('d-none');
   box2.classList.remove('d-none');
   body.classList.remove('hidden');
+  drum1.play()
+  drum1.pause()
+  mic.start();
+  amplitude.setInput(mic);
   recognition.start();
   clearInterval();
   t = true;
-
-  mic.start();
-  amplitude.setInput(mic);
 });
 
 const talkAI = (text) => {

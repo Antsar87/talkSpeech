@@ -30,7 +30,7 @@ function setup() {
   piano2 = loadSound('../music/melody2.wav');
 
   amplitude = new p5.Amplitude();
-  amplitude.setInput(mic);
+
   amplitude.smooth(0.6);
 }
 

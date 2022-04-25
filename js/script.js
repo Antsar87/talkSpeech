@@ -12,7 +12,6 @@ const drumtag2 = document.querySelector('#drum2');
 const pianotag1 = document.querySelector('#piano1');
 const pianotag2 = document.querySelector('#piano2');
 
-
 drumtag1.addEventListener('click', () => {
   drum2.pause();
   piano1.pause();
@@ -63,8 +62,8 @@ start.addEventListener('click', () => {
   box1.classList.add('d-none');
   box2.classList.remove('d-none');
   body.classList.remove('hidden');
-  drum1.play()
-  drum1.pause()
+  drum1.play();
+  drum1.pause();
   mic.start();
   amplitude.setInput(mic);
   recognition.start();
@@ -129,7 +128,7 @@ recognition.onresult = (e) => {
       transcript.includes('my name is') ||
       transcript.includes('i am') ||
       transcript.includes("i'm") ||
-      transcript !== ""
+      transcript !== ''
     ) {
       talkAI('The pleasure is all mine! …Do you like music?');
       sec = false;
@@ -143,7 +142,7 @@ recognition.onresult = (e) => {
   }
 
   if (first === true) {
-    if (transcript === 'hi' || transcript === 'hello') {
+    if (transcript.includes('hi') || transcript.includes('hello')) {
       talkAI('hello there, I’m Robert The Robot! What’s your name?');
       first = false;
       sec = true;

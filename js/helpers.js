@@ -19,7 +19,7 @@ function toggleInput(audio) {
     mic.start();
     amplitude.setInput(mic);
   } else {
-    audio.play();
+    audio.loop();
     mic.stop();
     amplitude.setInput(audio);
   }

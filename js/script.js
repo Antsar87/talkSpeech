@@ -97,7 +97,6 @@ const talkAI = (text) => {
 recognition.onresult = (e) => {
   transcript = e.results[0][0].transcript.toLowerCase().trim();
   t = '';
-  console.log(transcript);
 
   if (fourth === true) {
     if (

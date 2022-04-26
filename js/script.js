@@ -23,29 +23,29 @@ const intervalStart = () => {
 };
 
 drumtag1.addEventListener('click', () => {
+  drumtag1.classList.toggle('high');
+  drumtag2.classList.remove('high');
   drum2.pause();
-  piano1.pause();
-  piano2.pause();
   toggleInput(drum1);
 });
 
 drumtag2.addEventListener('click', () => {
+  drumtag1.classList.remove('high');
+  drumtag2.classList.toggle('high');
   drum1.pause();
-  piano1.pause();
-  piano2.pause();
   toggleInput(drum2);
 });
 
 pianotag1.addEventListener('click', () => {
-  drum1.pause();
-  drum2.pause();
+  pianotag1.classList.toggle('high');
+  pianotag2.classList.remove('high');
   piano2.pause();
   toggleInput(piano1);
 });
 
 pianotag2.addEventListener('click', () => {
-  drum1.pause();
-  drum2.pause();
+  pianotag1.classList.remove('high');
+  pianotag2.classList.toggle('high');
   piano1.pause();
   toggleInput(piano2);
 });

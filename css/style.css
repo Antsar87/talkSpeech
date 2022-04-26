@@ -78,6 +78,10 @@ body {
   cursor: pointer;
 }
 
+.box2 main .head, .box2 main .head2 {
+  margin-top: 50px;
+}
+
 .box2 main .head img {
   height: 150px;
 }
